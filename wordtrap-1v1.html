@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signal Trap 1v1 - Multiplayer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* Multiplayer Specific Styles */
+        #lobby-area {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #00FF41;
+            text-align: center;
+        }
+
+        #lobby-area.hidden {
+            display: none;
+        }
+
+        #qrcode-container {
+            background: #fff;
+            padding: 10px;
+            margin: 20px;
+            border: 4px solid #00FF41;
+        }
+
+        .lobby-btn {
+            background: #00FF41;
+            color: #000;
+            font-family: 'Press Start 2P';
+            border: none;
+            padding: 15px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .hud-multi {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            border-bottom: 2px solid #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        .p-score {
+            font-size: 12px;
+        }
+
+        .p-score span {
+            display: block;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .p-score.you {
+            color: #00FF41;
+            text-align: left;
+        }
+
+        .p-score.opp {
+            color: #FF4136;
+            text-align: right;
+        }
+    </style>
+  <script type="module" crossorigin src="./assets/wordtrap1v1-F1qbZunG.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="./assets/Game-CGVKVk14.js">
+  <link rel="stylesheet" crossorigin href="./assets/Game-Cuw9G_WO.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="crt-overlay"></div>
+
+        <!-- LOBBY OVERLAY -->
+        <div id="lobby-area">
+            <h1>1v1 BATTLE</h1>
+            <p>Scan to Join</p>
+
+            <div id="qrcode-wrapper" class="hidden">
+                <canvas id="qr-canvas"></canvas>
+                <p style="font-size: 10px; margin-top: 5px;">Scan with another device</p>
+                <p id="join-link" style="font-size: 8px; color: #888; margin-top: 5px;"></p>
+            </div>
+
+            <div id="lobby-controls">
+                <button id="btn-host" class="lobby-btn">HOST MATCH</button>
+                <p id="status-text" style="margin-top: 20px; font-size: 10px; color: #888;">WAITING...</p>
+            </div>
+        </div>
+
+        <div class="hud">
+            <!-- Modified HUD for 1v1 -->
+            <div class="panel left">
+                <div class="label">YOU</div>
+                <div id="score-val" style="color: #00FF41;">$0</div>
+            </div>
+
+            <div class="panel center">
+                <div class="label">TIME</div>
+                <div id="time-bar-container">
+                    <div id="time-bar"></div>
+                </div>
+            </div>
+
+            <div class="panel right">
+                <div class="label">OPPONENT</div>
+                <div id="opp-score-val" style="color: #FF4136;">$0</div>
+            </div>
+        </div>
+
+        <!-- Reusing standard Game Area -->
+        <div class="game-area">
+            <div id="message-area" class="hidden">
+                <h1 id="message-title">WAITING FOR HOST</h1>
+                <p id="message-sub">System Sync In Progress...</p>
+                <button id="start-btn" class="hidden">START MATCH</button>
+            </div>
+
+            <div id="word-display-container">
+                <div id="word-display">CONNECTING</div>
+            </div>
+        </div>
+
+        <div class="controls-area">
+            <button id="btn-no" class="game-btn red">
+                <span class="icon">✖</span>
+                <span class="text">NOPE</span>
+            </button>
+            <button id="btn-yes" class="game-btn green">
+                <span class="icon">✔</span>
+                <span class="text">STARTUP</span>
+            </button>
+        </div>
+
+        <div class="scanlines"></div>
+    </div>
+
+    <div class="branding">Thapar Venture Club | E-SUMMIT 26'</div>
+    <a href="index.html" class="back-home">← LEAVE MATCH</a>
+
+</body>
+
+</html>
