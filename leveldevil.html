@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Devil - TVC E-SUMMIT 26'</title>
+    <link rel="stylesheet" href="/src/games/leveldevil/style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <div class="side-panel left">
+            <div id="timer-box">
+                <div class="label">TIME</div>
+                <div id="timer-val">60</div>
+            </div>
+            <div id="lives-box">
+                <div class="label">LIVES</div>
+                <div id="lives-val">3</div>
+            </div>
+        </div>
+
+        <div class="side-panel right">
+            <div class="promo-content">
+                <strong>WIN & GET</strong>
+                <span>A SURPRISE PRODUCT</span>
+            </div>
+        </div>
+
+        <iframe src="https://leveldevil-trollgame.github.io" id="game-iframe" title="Level Devil" allow="fullscreen"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+        </iframe>
+        <!-- Custom UI layer removed as the iframe has its own UI -->
+        <div class="branding">Thapar Venture Club | E-SUMMIT 26'</div>
+        <a href="/" class="back-home">← Back to Hub</a>
+    </div>
+    <script type="module" src="/src/games/leveldevil/main.js"></script>
+</body>
+
+</html>
