@@ -24,6 +24,8 @@
             justify-content: center;
             color: #00FF41;
             text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         #lobby-area.hidden {
@@ -33,8 +35,27 @@
         #qrcode-container {
             background: #fff;
             padding: 10px;
-            margin: 20px;
+            margin: 10px;
             border: 4px solid #00FF41;
+        }
+
+        #player-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .player-card {
+            border: 1px solid #333;
+            padding: 5px;
+            font-size: 10px;
+            color: #fff;
+            background: #111;
         }
 
         .lobby-btn {
@@ -46,38 +67,21 @@
             margin: 10px;
             cursor: pointer;
             font-size: 14px;
+            text-transform: uppercase;
         }
 
-        .hud-multi {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            border-bottom: 2px solid #333;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-        }
-
-        .p-score {
-            font-size: 12px;
-        }
-
-        .p-score span {
-            display: block;
-            font-size: 16px;
-            margin-top: 5px;
-        }
-
-        .p-score.you {
+        #nickname-input {
+            background: #000;
+            border: 2px solid #00FF41;
             color: #00FF41;
-            text-align: left;
-        }
-
-        .p-score.opp {
-            color: #FF4136;
-            text-align: right;
+            font-family: 'Press Start 2P';
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 80%;
         }
     </style>
-  <script type="module" crossorigin src="./assets/wordtrap1v1-F1qbZunG.js"></script>
+  <script type="module" crossorigin src="./assets/wordtrapParty-CcaZnNRi.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
   <link rel="modulepreload" crossorigin href="./assets/Game-CGVKVk14.js">
   <link rel="stylesheet" crossorigin href="./assets/Game-Cuw9G_WO.css">
@@ -89,23 +93,36 @@
 
         <!-- LOBBY OVERLAY -->
         <div id="lobby-area">
-            <h1>1v1 BATTLE</h1>
-            <p>Scan to Join</p>
+            <h1>PARTY MODE</h1>
+            <p id="lobby-status">Scanning...</p>
 
-            <div id="qrcode-wrapper" class="hidden">
-                <canvas id="qr-canvas"></canvas>
-                <p style="font-size: 10px; margin-top: 5px;">Scan with another device</p>
-                <p id="join-link" style="font-size: 8px; color: #888; margin-top: 5px;"></p>
+            <!-- Host View -->
+            <div id="host-view" class="hidden">
+                <div id="qrcode-wrapper">
+                    <canvas id="qr-canvas"></canvas>
+                    <p style="font-size: 10px; margin-top: 5px;">Scan to Join</p>
+                </div>
+                <div id="player-grid">
+                    <!-- Players appear here -->
+                </div>
+                <button id="btn-start" class="lobby-btn hidden">START GAME</button>
             </div>
 
-            <div id="lobby-controls">
-                <button id="btn-host" class="lobby-btn">HOST MATCH</button>
-                <p id="status-text" style="margin-top: 20px; font-size: 10px; color: #888;">WAITING...</p>
+            <!-- Guest View -->
+            <div id="guest-view" class="hidden">
+                <p>ENTER CODENAME:</p>
+                <input type="text" id="nickname-input" placeholder="AGENT_X" maxlength="10">
+                <button id="btn-join" class="lobby-btn">JOIN MATCH</button>
+            </div>
+
+            <!-- Initial Choice (If visiting directly) -->
+            <div id="role-select">
+                <button id="btn-host" class="lobby-btn">HOST PARTY</button>
             </div>
         </div>
 
         <div class="hud">
-            <!-- Modified HUD for 1v1 -->
+            <!-- Modified HUD for Party -->
             <div class="panel left">
                 <div class="label">YOU</div>
                 <div id="score-val" style="color: #00FF41;">$0</div>
@@ -119,8 +136,8 @@
             </div>
 
             <div class="panel right">
-                <div class="label">OPPONENT</div>
-                <div id="opp-score-val" style="color: #FF4136;">$0</div>
+                <div class="label">LEADERBOARD</div>
+                <div id="rank-val" style="color: #FFD700;">#1</div>
             </div>
         </div>
 
