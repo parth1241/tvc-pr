@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Startup Signal Trap - Word Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/wordtrap-CD3DMSEg.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="stylesheet" crossorigin href="./assets/wordtrap-Cuw9G_WO.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="crt-overlay"></div>
+
+        <div class="hud">
+            <div class="panel left">
+                <div class="label">LEVEL</div>
+                <div id="level-val">1</div>
+            </div>
+            <div class="panel left-center">
+                <div class="label">LIVES</div>
+                <div id="lives-val">3</div>
+            </div>
+            <div class="panel center">
+                <div class="label">TIME</div>
+                <div id="time-bar-container">
+                    <div id="time-bar"></div>
+                </div>
+            </div>
+            <div class="panel right">
+                <div class="label">VALUATION</div>
+                <div id="score-val">$0</div>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <div id="message-area">
+                <h1 id="message-title">SYSTEM READY</h1>
+                <p id="message-sub">Identify Startup Terms to Secure Funding</p>
+                <button id="start-btn">INITIALIZE</button>
+            </div>
+
+            <div id="word-display-container">
+                <div id="word-display">STARTUP</div>
+            </div>
+        </div>
+
+        <div class="controls-area">
+            <button id="btn-no" class="game-btn red">
+                <span class="icon">✖</span>
+                <span class="text">NOPE</span>
+                <span class="key-hint">(A / Left)</span>
+            </button>
+            <button id="btn-yes" class="game-btn green">
+                <span class="icon">✔</span>
+                <span class="text">STARTUP</span>
+                <span class="key-hint">(D / Right)</span>
+            </button>
+        </div>
+
+        <div class="scanlines"></div>
+    </div>
+
+    <div class="branding">Thapar Venture Club | E-SUMMIT 26'</div>
+    <a href="index.html" class="back-home">← TERMINATE SESSION</a>
+
+</body>
+
+</html>
