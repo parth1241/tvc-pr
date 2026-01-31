@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Startup Chain Challenge - 2v2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/chainchallenge-aaXSlQvX.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="./assets/browser-C2wacR1p.js">
+  <link rel="stylesheet" crossorigin href="./assets/chainchallenge-6R_I93Fm.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="crt-overlay"></div>
+
+        <!-- LOBBY AREA -->
+        <div id="lobby-area">
+            <h1 class="neon-title">CHAIN // CHALLENGE</h1>
+            <p id="lobby-status">SELECT ALLIANCE</p>
+
+            <!-- Role Select -->
+            <div id="role-select">
+                <button id="btn-host" class="lobby-btn">HOST PROTOCOL</button>
+                <button id="btn-join-manual" class="lobby-btn">JOIN PROTOCOL</button>
+            </div>
+
+            <!-- Host View -->
+            <div id="host-view" class="hidden">
+                <div id="qrcode-container">
+                    <canvas id="qr-canvas"></canvas>
+                </div>
+                <div class="team-container">
+                    <div class="team-box red">
+                        <h3>RED TEAM</h3>
+                        <div id="list-red"></div>
+                    </div>
+                    <div class="team-box blue">
+                        <h3>BLUE TEAM</h3>
+                        <div id="list-blue"></div>
+                    </div>
+                </div>
+                <button id="btn-start" class="lobby-btn hidden">INITIATE MATCH</button>
+            </div>
+
+            <!-- Guest View -->
+            <div id="guest-view" class="hidden">
+                <input type="text" id="room-code-input" placeholder="ROOM CODE" maxlength="4">
+                <input type="text" id="nickname-input" placeholder="CODENAME" maxlength="10">
+
+                <div class="team-select">
+                    <button class="team-btn red" data-team="RED">JOIN RED</button>
+                    <button class="team-btn blue" data-team="BLUE">JOIN BLUE</button>
+                </div>
+                <!-- Status Msg -->
+                <p id="join-status" style="font-size: 10px; margin-top: 10px;"></p>
+            </div>
+        </div>
+
+        <!-- GAME AREA -->
+        <div id="game-area" class="hidden">
+            <!-- HUD -->
+            <div class="hud">
+                <div class="hud-panel red-score">
+                    <span class="label">RED</span>
+                    <span id="score-red" class="val">0</span>
+                </div>
+                <div class="hud-panel center">
+                    <span class="label">ROUND</span>
+                    <span id="round-val" class="val">1/3</span>
+                </div>
+                <div class="hud-panel blue-score">
+                    <span id="score-blue" class="val">0</span>
+                    <span class="label">BLUE</span>
+                </div>
+            </div>
+
+            <!-- TOPIC DISPLAY -->
+            <div class="topic-container">
+                <h2 id="topic-text">LOADING...</h2>
+            </div>
+
+            <!-- CHAIN SLOTS (Visual feedback of progress) -->
+            <div class="chain-progress-container">
+                <div id="slots-red" class="slots-row">
+                    <!-- 5 slots -->
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div id="slots-blue" class="slots-row">
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                </div>
+            </div>
+
+            <!-- INTERACTION AREA -->
+            <div class="options-grid" id="options-grid">
+                <!-- Buttons injected by JS -->
+            </div>
+
+            <p id="feedback-text"></p>
+        </div>
+
+        <div class="scanlines"></div>
+    </div>
+
+    <div class="branding">Thapar Venture Club | E-SUMMIT 26' <span style="color: #00f3ff; font-size: 8px;">(v1.0 -
+            CHAIN)</span></div>
+    <a href="index.html" class="back-home">← ABORT</a>
+
+</body>
+
+</html>
